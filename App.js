@@ -1,21 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import Game from './src/components/Game';
 
-export default App = () => (
+export default App = () => {
+  const [gameId, setGameId] = useState(0);
+
+
+  return (
     <View style={styles.container}>
-      <Game randomNumbersCount={6}></Game>
+      <Game key={gameId} randomNumbersCount={6} initialSeconds={5}></Game>
       <StatusBar style="dark" />
+      <Button title="Play Again" onPress={() => setGameId(() => gameId +1 )}/>
     </View>
-  );
+  )    
+};
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 40,
+    paddingVertical: 60,
     paddingHorizontal: 50,
-  },
+  }
 });
+ 

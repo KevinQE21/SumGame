@@ -5,8 +5,8 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 export default RandomNumber = ({ id, number, disable, onSelected }) => {
 
     const handlePresss = () => {
-        console.log(number);
-        onSelected(id);
+        if(!disable)
+            onSelected(id);
     };
 
     return (
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     disable: {
         opacity: 0.3,
     }
-})
+}) 
