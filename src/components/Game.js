@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import RandomNumber from './RandomNumber';
+import shuffle from 'lodash.shuffle'; 
 
 let intervalId;
 
@@ -28,7 +29,10 @@ export default Game = ({ randomNumbersCount, initialSeconds }) => { //Se realiza
         acc + cur 
         , 0); //Reduce suma los numeros de un array en otras palabras reduce la lista a 1 num aleatorio, recorre todos los items de la lista siempre que devuelva 1 cosa
         
-        setRandomNumbers(firstRandomNumbers);//Asigna el state por primera vez
+        const shuffleRandomNumbers = shuffle(firstRandomNumbers);//parte de una libreria para generar numeros random
+
+        setRandomNumbers(shuffleRandomNumbers);//Asigna el state por primera vez
+
         setTarget(firstTarget);//Asigna el state por primera vez
 
         intervalId = setInterval(() => {
